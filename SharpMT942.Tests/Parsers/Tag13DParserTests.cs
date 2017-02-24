@@ -3,7 +3,7 @@ using Xunit;
 
 namespace SharpMT942.Tests.Parsers
 {
-    public class Tag13dParserTests
+    public class Tag13DParserTests
     {
         [Fact]
         public void BasicParser() 
