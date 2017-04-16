@@ -2,9 +2,9 @@ using System.Text.RegularExpressions;
 
 namespace SharpMT942.Parsers
 {
-    public class Tag13DParser
+    public static class Tag13dParser
     {
-        public DateTimeIndication Parse(string data)
+        public static DateTimeIndication Parse(string data)
         {
             var regex = new Regex
             (

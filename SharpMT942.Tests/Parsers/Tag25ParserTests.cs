@@ -6,10 +6,9 @@ namespace SharpMT942.Tests.Parsers
     public class Tag25ParserTests
     {
         [Fact]
-        public void BasicParser() 
+        public void AccountNumber() 
         {   
-            var parser = new Tag25Parser();
-            var accountNumber = parser.Parse(":25:123456789ABCD");
+            var accountNumber = Tag25Parser.Parse(":25:123456789ABCD");
 
             Assert.Equal("123456789ABCD", accountNumber.Value);
         }

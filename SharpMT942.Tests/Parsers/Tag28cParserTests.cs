@@ -3,28 +3,25 @@ using Xunit;
 
 namespace SharpMT942.Tests.Parsers
 {
-    public class Tag28cParserTests
+    public class Tag28CParserTests
     {
         [Fact]
-        public void BasicParser() 
+        public void TransactionStatementNumber() 
         {
-            var tag28cParser = new Tag28CParser();
-            
-            var transactionStatementNumber = tag28cParser.Parse(":28c:12345/35467");
-    
-            Assert.Equal(12345, transactionStatementNumber.StatementNumber);
-            Assert.Equal(35467, transactionStatementNumber.SequenceNumber);
+            var transactionStatementNumber = Tag28CParser.Parse(":28c:12345/35467");
+
+            var expectedTransactionStatementNumber = new TransactionStatementNumber(12345, 35467);
+            Assert.Equal(expectedTransactionStatementNumber, transactionStatementNumber);
         }
 
          [Fact]
         public void OptionalSequenceNumberParser() 
-        {
-            var tag28cParser = new Tag28CParser();
-            
-            var transactionStatementNumber = tag28cParser.Parse(":28c:12345");
-    
-            Assert.Equal(12345, transactionStatementNumber.StatementNumber);
-            Assert.Equal(null, transactionStatementNumber.SequenceNumber);
+        {            
+            var transactionStatementNumber = Tag28CParser.Parse(":28c:12345");
+
+            var expectedTransactionStatementNumber = new TransactionStatementNumber(12345);
+
+            Assert.Equal(expectedTransactionStatementNumber, transactionStatementNumber);
         }
     }
 

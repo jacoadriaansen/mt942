@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace SharpMT942.Parsers
@@ -34,6 +35,7 @@ namespace SharpMT942.Parsers
                 (?<customerReference>\w{1,16})
                 /{2}?
                 (?<bankReference>\w{1,16})?
+                (\r?\n?)?
                 (?<supplementaryDetails>\w{1,32})?", 
                 RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase
             );
@@ -48,7 +50,7 @@ namespace SharpMT942.Parsers
             
             var debitOrCredit = match.Groups["debitOrCredit"].Value;
             
-            var amount = Convert.ToDouble(match.Groups["amount"].Value);
+            var amount = decimal.Parse($"{match.Groups["amount"].Value}.{match.Groups["decimal"].Value}", NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
             
             var transactionDirection = FindTransactionDirection(debitOrCredit);
 

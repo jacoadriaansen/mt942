@@ -2,9 +2,9 @@ using System.Text.RegularExpressions;
 
 namespace SharpMT942.Parsers
 {
-    public class Tag28CParser
+    public static class Tag28CParser
     {
-        public TransactionStatementNumber Parse(string data)
+        public static TransactionStatementNumber Parse(string data)
         {
             var regex = new Regex
             (

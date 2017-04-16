@@ -3,9 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace SharpMT942.Parsers
 {
-    public class Tag20Parser
+    public static class Tag20Parser
     {
-        public TransactionReferenceNumber Parse(string data)
+        public static TransactionReferenceNumber Parse(string data)
         {
             var regex = new Regex
             (

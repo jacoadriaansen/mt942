@@ -42,13 +42,15 @@
   <ItemGroup>
     <Compile Include="AccountIdentifier.cs" />
     <Compile Include="DateTimeIndication.cs" />
-    <Compile Include="FloorLimitIndicator.cs" />
-    <Compile Include="Parsers\Tag13DParser.cs" />
+    <Compile Include="Money.cs" />
+    <Compile Include="NumberOfEntities.cs" />
+    <Compile Include="Parsers\Tag13dParser.cs" />
     <Compile Include="Parsers\Tag20Parser.cs" />
     <Compile Include="Parsers\Tag25Parser.cs" />
     <Compile Include="Parsers\Tag28CParser.cs" />
     <Compile Include="Parsers\Tag34FParser.cs" />
     <Compile Include="Parsers\Tag61Parser.cs" />
+    <Compile Include="Parsers\Tag90DParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statement.cs" />
     <Compile Include="TransactionDirection.cs" />

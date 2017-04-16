@@ -6,11 +6,9 @@ namespace SharpMT942.Tests.Parsers
     public class Tag13DParserTests
     {
         [Fact]
-        public void BasicParser() 
+        public void DateTimeIndication() 
         {
-            var parser = new Tag13DParser();
-            var dateTimeIndication = parser.Parse(":13D:15122");
-            
+            var dateTimeIndication = Tag13dParser.Parse(":13D:15122");            
             Assert.Equal(15122, dateTimeIndication.Date);
         }
     }    

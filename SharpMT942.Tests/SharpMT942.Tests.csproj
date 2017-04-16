@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parsers\Tag61ParserTests.cs" />
+    <Compile Include="Parsers\Tag86ParserTests.cs" />
+    <Compile Include="Parsers\Tag90dParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Parsers\Tag13DParserTests.cs" />
+    <Compile Include="Parsers\Tag13dParserTests.cs" />
     <Compile Include="Parsers\Tag20ParserTests.cs" />
     <Compile Include="Parsers\Tag25ParserTests.cs" />
     <Compile Include="Parsers\Tag28cParserTests.cs" />

@@ -34,16 +34,39 @@ namespace SharpMT942.Tests.Parsers
         }
 
         [Fact]
-        public void Amount()
+        public void Amount_WithDot()
         {
             var parser = new Tag61Parser();
             var statement = parser.Parse(":61:201612281229DA1000.00NMSCABCDEFGHIJKLMNOP//ABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVXYZ1234567");
 
-            Assert.Equal(1000.00, statement.Amount);
-            Assert.Equal(TransactionTypes.Msc, statement.TransactionType);
-            Assert.Equal("ABCDEFGHIJKLMNOP", statement.CustomerReference);
-            Assert.Equal("ABCDEFGHIJKLMNOP", statement.BankReference);
-            Assert.Equal("ABCDEFGHIJKLMNOPQRSTUVXYZ1234567", statement.SupplementaryDetails);
+            Assert.Equal(1000.00M, statement.Amount);
+        }
+
+        [Fact]
+        public void Amount_WithDotDecimals()
+        {
+            var parser = new Tag61Parser();
+            var statement = parser.Parse(":61:201612281229DA1000.50NMSCABCDEFGHIJKLMNOP//ABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVXYZ1234567");
+
+            Assert.Equal(1000.50M, statement.Amount);
+        }
+
+        [Fact]
+        public void Amount_WithComma()
+        {
+            var parser = new Tag61Parser();
+            var statement = parser.Parse(":61:201612281229DA1000,00NMSCABCDEFGHIJKLMNOP//ABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVXYZ1234567");
+
+            Assert.Equal(1000.00M, statement.Amount);
+        }
+
+        [Fact]
+        public void Amount_WithCommaDecimals()
+        {
+            var parser = new Tag61Parser();
+            var statement = parser.Parse(":61:201612281229DA1000,50NMSCABCDEFGHIJKLMNOP//ABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVXYZ1234567");
+
+            Assert.Equal(1000.50M, statement.Amount);
         }
 
         [Fact]
@@ -74,10 +97,29 @@ namespace SharpMT942.Tests.Parsers
         }
 
         [Fact]
-        public void SupplementaryDetails()
+        public void SupplementaryDetailsUnixes()
         {
             var parser = new Tag61Parser();
-            var statement = parser.Parse(":61:201612281229DA1000.00NMSCABCDEFGHIJKLMNOP//ABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVXYZ1234567");
+            var statement = parser.Parse($":61:201612281229DA1000.00NMSCABCDEFGHIJKLMNOP//ABCDEFGHIJKLMNOP\nABCDEFGHIJKLMNOPQRSTUVXYZ1234567");
+
+            Assert.Equal("ABCDEFGHIJKLMNOPQRSTUVXYZ1234567", statement.SupplementaryDetails);
+        }
+
+        [Fact]
+        public void SupplementaryDetailsWindows()
+        {
+            var parser = new Tag61Parser();
+            var statement = parser.Parse($":61:201612281229DA1000.00NMSCABCDEFGHIJKLMNOP//ABCDEFGHIJKLMNOP\r\nABCDEFGHIJKLMNOPQRSTUVXYZ1234567");
+
+            Assert.Equal("ABCDEFGHIJKLMNOPQRSTUVXYZ1234567", statement.SupplementaryDetails);
+        }
+
+
+        [Fact]
+        public void SupplementaryDetailsWithOutNewLine()
+        {
+            var parser = new Tag61Parser();
+            var statement = parser.Parse($":61:201612281229DA1000.00NMSCABCDEFGHIJKLMNOP//ABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVXYZ1234567");
 
             Assert.Equal("ABCDEFGHIJKLMNOPQRSTUVXYZ1234567", statement.SupplementaryDetails);
         }
