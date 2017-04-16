@@ -44,7 +44,7 @@
     <Compile Include="DateTimeIndication.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="NumberOfEntities.cs" />
-    <Compile Include="Parsers\Tag13dParser.cs" />
+    <Compile Include="Parsers\Tag13DParser.cs" />
     <Compile Include="Parsers\Tag20Parser.cs" />
     <Compile Include="Parsers\Tag25Parser.cs" />
     <Compile Include="Parsers\Tag28CParser.cs" />

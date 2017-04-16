@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace SharpMT942.Parsers
 {
-    public static class Tag13dParser
+    public static class Tag13DParser
     {
         public static DateTimeIndication Parse(string data)
         {

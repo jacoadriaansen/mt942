@@ -2,7 +2,7 @@
 
 namespace SharpMT942.Parsers
 {
-    public static class Tag90dParser
+    public static class Tag90DParser
     {
         public static NumberOfEntitiesTransactionReport Parse(string data)
         {

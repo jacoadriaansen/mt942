@@ -74,7 +74,7 @@ namespace SharpMT942.Parsers
             );
         }
 
-        public TransactionDirection FindTransactionDirection(string value)
+        private static TransactionDirection FindTransactionDirection(string value)
         {
             switch(value)
             {
